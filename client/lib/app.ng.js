@@ -1,7 +1,8 @@
 angular
   .module('Whatsnoodle', [
     'angular-meteor',
-    'ionic'
+    'ionic',
+    'angularMoment'
   ]);
 
 // Wait for the client platform to start before bootstrapping angular.
