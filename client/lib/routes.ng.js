@@ -17,6 +17,15 @@ function config($stateProvider, $urlRouterProvider) {
           controller: 'ListChatsCtrl as chats'
         }
       }
+    })
+    .state('tab.chat', {
+      url: '/chats/:chatId',
+      views: {
+        'tab-chats': {
+          templateUrl: 'client/components/chats/view-chat.html',
+          controller: 'ViewChatCtrl as viewChat'
+        }
+      }
     });
  
   $urlRouterProvider.otherwise('tab/chats');
