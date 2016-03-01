@@ -23,7 +23,15 @@ function ViewChatCtrl ($scope, $reactive, $stateParams, $timeout, $ionicScrollDe
   });
 
   function sendMessage () {
-
+    if (_.isEmpty(this.message)) return;
+ 
+    Meteor.call('newMessage', {
+      text: this.message,
+      type: 'text',
+      chatId: chatId
+    });
+ 
+    delete this.message;
   }
 
   function inputUp () {

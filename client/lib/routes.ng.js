@@ -7,7 +7,10 @@ function config($stateProvider, $urlRouterProvider) {
     .state('tab', {
       url: '/tab',
       abstract: true,
-      templateUrl: 'client/components/shared/tabs.html'
+      templateUrl: 'client/components/shared/tabs.html',
+      resolve: {
+        user: isAuthorized
+      }
     })
     .state('tab.chats', {
       url: '/chats',
@@ -26,7 +29,37 @@ function config($stateProvider, $urlRouterProvider) {
           controller: 'ViewChatCtrl as viewChat'
         }
       }
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'client/components/users/login.html',
+      controller: 'LoginUserCtrl as loginUser'
+    })
+    .state('confirmation', {
+      url: '/confirmation/:phone',
+      templateUrl: 'client/components/users/confirmation.html',
+      controller: 'ConfirmUserCtrl as confirmUser'
+    })
+    .state('profile', {
+      url: '/profile',
+      templateUrl: 'client/components/users/view-user.html',
+      controller: 'ViewUserCtrl as viewUser',
+      resolve: {
+        user: isAuthorized
+      }
     });
  
   $urlRouterProvider.otherwise('tab/chats');
+
+  function isAuthorized($q) {
+    let deferred = $q.defer();
+ 
+    if (_.isEmpty(Meteor.user()))
+      deferred.reject('AUTH_REQUIRED');
+    else
+      deferred.resolve();
+ 
+    return deferred.promise;
+  }
+
 }

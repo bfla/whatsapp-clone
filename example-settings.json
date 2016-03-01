@@ -1,0 +1,11 @@
+{
+  "TWILIO": {
+    "FROM": "Whatsnoodle",
+    "SID": "",
+    "TOKEN": ""
+  },
+  "ACCOUNTS_PHONE": {
+    "ADMIN_NUMBERS": ["123456789"],
+    "MASTER_CODE": "3952"
+  }
+}
