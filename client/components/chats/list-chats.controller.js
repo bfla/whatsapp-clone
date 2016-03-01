@@ -2,7 +2,7 @@ angular
   .module('Whatsnoodle')
   .controller('ListChatsCtrl', ListChatsCtrl);
 
-function ListChatsCtrl ($scope, $reactive) {
+function ListChatsCtrl ($scope, $reactive, $meteor) {
   $reactive(this).attach($scope);
 
   this.remove = remove;
@@ -12,9 +12,9 @@ function ListChatsCtrl ($scope, $reactive) {
       return Chats.find();
     }
   });
-
+  
   function remove (chat) {
-    this.data.remove(chat);
+    $meteor.collection(Chats).remove(chat);
   }
 
 }
