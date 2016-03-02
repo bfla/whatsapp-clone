@@ -7,3 +7,8 @@ git clone https://github.com/bfla/whatsnoodle.git
 cd whatsnoodle/
 meteor
 ```
+
+## Deploy to meteor.com
+```
+meteor deploy <appName>.meteor.com
+```
