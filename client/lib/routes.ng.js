@@ -32,13 +32,13 @@ function config($stateProvider, $urlRouterProvider) {
     })
     .state('login', {
       url: '/login',
-      templateUrl: 'client/components/users/login.html',
+      templateUrl: 'client/components/users/login-user.html',
       controller: 'LoginUserCtrl as loginUser'
     })
     .state('confirmation', {
       url: '/confirmation/:phone',
-      templateUrl: 'client/components/users/confirmation.html',
-      controller: 'ConfirmUserCtrl as confirmUser'
+      templateUrl: 'client/components/users/confirm-details.html',
+      controller: 'ConfirmDetailsCtrl as confirmDetails'
     })
     .state('profile', {
       url: '/profile',
@@ -46,6 +46,15 @@ function config($stateProvider, $urlRouterProvider) {
       controller: 'ViewUserCtrl as viewUser',
       resolve: {
         user: isAuthorized
+      }
+    })
+    .state('tab.settings', {
+      url: '/settings',
+      views: {
+        'tab-settings': {
+          templateUrl: 'client/components/users/settings.html',
+          controller: 'SettingsCtrl as settings',
+        }
       }
     });
  

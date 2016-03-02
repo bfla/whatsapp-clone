@@ -22,6 +22,11 @@ function ViewChatCtrl ($scope, $reactive, $stateParams, $timeout, $ionicScrollDe
     }
   });
 
+  $scope.$watchCollection('viewChat.messages', (oldVal, newVal) => {
+    let animate = oldVal.length !== newVal.length;
+    $ionicScrollDelegate.$getByHandle('chatScroll').scrollBottom(animate);
+  });
+
   function sendMessage () {
     if (_.isEmpty(this.message)) return;
  
