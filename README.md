@@ -10,5 +10,7 @@ meteor
 
 ## Deploy to meteor.com
 ```
+// This also requirest a settings.json file with a Twilio account.
+// (see example-settings.json)
 meteor deploy <appName>.meteor.com
 ```
