@@ -6,6 +6,7 @@ function ListChatsCtrl ($scope, $reactive, $meteor) {
   $reactive(this).attach($scope);
 
   this.remove = remove;
+  this.showNewChatModal = showNewChatModal;
 
   this.helpers({
     data() {
@@ -14,7 +15,11 @@ function ListChatsCtrl ($scope, $reactive, $meteor) {
   });
   
   function remove (chat) {
-    $meteor.collection(Chats).remove(chat);
+    Meteor.call('removeChat', chat._id);
+  }
+
+  function showNewChatModal() {
+    NewChat.showModal();
   }
 
 }
